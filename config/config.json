@@ -1,0 +1,14 @@
+{
+  "architectures": [
+    "BertModel"
+  ],
+  "n_layers": 12,
+  "d_model": 768,
+  "d_ff": 3072,
+  "n_heads": 12,
+  "max_position_embeddings": 512,
+  "vocab_size": 21128,
+  "num_labels": 20,
+  "loss_type": "ce",
+  "dropout": 0.1
+}
