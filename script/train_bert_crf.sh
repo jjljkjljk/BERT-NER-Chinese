@@ -1,9 +1,10 @@
 python train.py \
     --device gpu \
-    --output_path output/bert_softmax \
-    --load_model_weights \
+    --output_path output/bert_crf \
+    --weight_decay 0.01 \
     --loss_type ce \
     --lr 5e-5 \
+    --crf_lr 5e-3 \
     --eps 1.0e-08 \
     --epochs 10 \
     --batch_size_train 128 \
