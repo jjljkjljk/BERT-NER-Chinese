@@ -154,7 +154,9 @@ def evaluate(args, model, dataloader):
             eval_loss += loss
 
             input_lens = (torch.sum(input_ids != 0, dim=-1) - 2).tolist()   # 减去padding的[CLS]与[SEP]
-            preds = torch.argmax(logits, dim=2)[:, 1:].tolist()  # 减去padding的[CLS]
+            # preds = torch.argmax(logits, dim=2)[:, 1:].tolist()  # 减去padding的[CLS]
+            preds = model.crf.decode(logits, attention_mask).squeeze(0)
+            preds = preds[:, 1:].tolist()  # 减去padding的[CLS]
             label_ids = label_ids[:, 1:].tolist()   # 减去padding的[CLS]
             # preds = np.argmax(logits.cpu().numpy(), axis=2).tolist()
             # label_ids = label_ids.cpu().numpy().tolist()
